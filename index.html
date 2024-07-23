@@ -28,9 +28,9 @@
         var userrole = url.searchParams.get("userrole");
 
 	if (userrole=='admin') {
-	    beamer_config['enabled'] = true;
+	    beamer_config['button'] = true;
     } else {
-        beamer_config['enabled'] = false;
+        beamer_config['button'] = false;
     }
     </script>
     <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
