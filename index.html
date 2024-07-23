@@ -22,6 +22,13 @@
             //user_lastname: "lastname",
             user_email: "test@gmail.com"
         };
+        var userrole = url.searchParams.get("userrole");
+
+	if (userrole=='admin') {
+	    beamer_config['enabled'] = true;
+    } else {
+        beamer_config['enabled'] = false;
+    }
     </script>
     <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
 </head>
