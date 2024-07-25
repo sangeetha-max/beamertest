@@ -32,6 +32,12 @@
     } else {
         beamer_config['lazy'] = true;
     }
+
+      	var cuid = url.searchParams.get("cuid");
+	if (cuid) {
+	    beamer_config['user_id'] = cuid;
+	}
+
     </script>
     <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
 </head>
