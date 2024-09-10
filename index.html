@@ -27,6 +27,16 @@ g<!DOCTYPE html>
 	var url_string = window.location.href;
     	var url = new URL(url_string);
 	    
+        var userrole = url.searchParams.get("userrole");
+
+	if (userrole=='admin') {
+	    beamer_config['lazy'] = false;
+    } else {
+        beamer_config['lazy'] = true;
+    }
+        var url_string = window.location.href;
+    	var url = new URL(url_string);
+	    
 	    beamer_config['user_id'] = "1234";
     </script>
     <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
