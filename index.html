@@ -5,9 +5,13 @@ g<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beamer Integration</title>
     <script>
-        var beamer_config = {
-            product_id: "wuGJmAJh67807",
- 		embed: true,
+	var beamer_config = {
+		product_id : "wuGJmAJh67807",
+		
+
+ 
+
+ embed: true,
 
  callback: () => {
 
@@ -20,40 +24,25 @@ g<!DOCTYPE html>
  console.log('Beamer clicked');
 
  }
-            //selector: "YOUR SELECTOR",
-            //display: "right",
-            //top: 0,
-            //right: 0,
-            //button_position: 'bottom-right',
-            //language: 'EN',
-            //lazy: false,
-            //alert: true,
-            //callback: your_callback_function,
-            //---------------Visitor Information---------------
-            user_firstname: "firstname",
-            user_lastname: "lastname",		
-	    filter: 'admin;test;JohnsTest;123;234;455;5;4;3;2;1;45',
-	    user_email: "emailID",
-	    user_id: "userID",
-	is_vip_user: true // or false, based on your database value
-	    
-        };
-	var url_string = window.location.href;
-    	var url = new URL(url_string);
-	    
-        //var userrole = url.searchParams.get("userrole");
 
-	if (userrole=='admin') {
-	    beamer_config['lazy'] = false;
-    } else {
-        beamer_config['lazy'] = true;
-    }//
-        var url_string = window.location.href;
-    	var url = new URL(url_string);
-	    
-	    beamer_config['user_id'] = "1234";
-    </script>
-    <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
+ 
+		selector : "YOUR SELECTOR",
+		display : "right",
+		top: 0,
+		right: 0,
+		button_position: 'bottom-right',
+		language: 'EN',
+		filter: 'admin',
+		lazy: false,
+		alert : true,
+		callback : your_callback_function,
+		//---------------Visitor Information---------------
+		user_firstname : "firstname",
+		user_lastname : "lastname",
+		user_email : "email"
+	};
+</script>
+<script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
 </head>
 <body>
     <h1>Welcome to Our Site!</h1>
