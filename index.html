@@ -1,48 +1,36 @@
-g<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beamer Integration</title>
-    <script>
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beamer Iframe Bug Reproduction</title>
+    <style>
+      body {
+        /* color-scheme: dark is what Beamer does not support */
+        color-scheme: dark;
+        background-color: black;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      iframe {
+        width: 300px;
+        height: 300px;
+        border: none;
+      }
+  <script>
 	var beamer_config = {
-		product_id : "wuGJmAJh67807",
-
- embed: true,
-
- callback: () => {
-
- console.log('Beamer callback');
-
- },
-
- onclick: (e) => {
-
- console.log('Beamer clicked',e);
-
- },
-
- 
-		
-		display : "right",
-		top: 0,
-		right: 0,
-		button_position: 'bottom-right',
-		language: 'EN',
-		filter: 'admin',
-		lazy: false,
-		alert : true,
-		//callback : your_callback_function,
-		//---------------Visitor Information---------------
-		user_firstname : "firstname",
-		user_lastname : "lastname",
-		user_email : "email"
+		product_id : 'wuGJmAJh67807' //DO NOT CHANGE: This is your product code on Beamer
 	};
 </script>
 <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
-</head>
-<body>
-    <h1>Welcome to Our Site!</h1>
-    <p>This is a sample page integrating Beamer.</p>
-</body>
+    </style>
+  </head>
+  <body>
+    <span style="color: white">Host app</span>
+    <iframe src="iframe-content.html"></iframe>
+  </body>
 </html>
