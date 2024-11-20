@@ -1,18 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beamer Integration</title>
-   <script>
-  var beamer_config = {
-    product_id : "wuGJmAJh67807" // DO NOT CHANGE: This is your product code on Beamer
-  };
-</script>
-<script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
+    <style>
+        body {
+            color-scheme: dark; /* Indicates dark mode */
+            background-color: black;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        iframe {
+            width: 300px;
+            height: 300px;
+            border: none;
+        }
+    </style>
+    <script>
+        var beamer_config = {
+            product_id: "wuGJmAJh67807" // DO NOT CHANGE: This is your product code on Beamer
+        };
+    </script>
+    <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
 </head>
 <body>
     <h1>Welcome to Our Site!</h1>
     <p>This is a sample page integrating Beamer.</p>
+
+    <span>Host app</span>
+    <iframe src="iframe-content.html"></iframe>
 </body>
 </html>
