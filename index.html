@@ -5,50 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mock E-commerce Site - Userflow Testing</title>
     
-    <!-- Beamer Configuration (Separate for testing) -->
+    <!-- Beamer Configuration -->
     <script>
         // Beamer Configuration
         var beamer_config = {
-            product_id: "aEfZpEfF71764",  // Example Beamer product ID
+            product_id: "aEfZpEfF71764", // Example Beamer product ID
             filter: 'admin',
             user_id: 1234
         };
     </script>
-
-    <!-- Beamer Embed Script (Separate for testing) -->
-    <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
+    <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
     
-    <!-- Userflow Script (Separate for testing) -->
+    <!-- Userflow Script -->
     <script>
         !function() {
             var e = "undefined" == typeof window ? {} : window,
-                t = e.userflow, r = e.history;
+                t = e.userflow,
+                r = e.history;
+
             function n(t, n) {
                 return function() {
-                    var o = new CustomEvent(n), s = Array.prototype.slice.call(arguments), a = t.apply(r, s);
+                    var o = new CustomEvent(n),
+                        s = Array.prototype.slice.call(arguments),
+                        a = t.apply(r, s);
                     return e.dispatchEvent(o), a;
                 }
             }
 
             if (r) {
                 e.__userflowStatePatched = !0;
-                var o = r.pushState, s = r.replaceState;
+                var o = r.pushState,
+                    s = r.replaceState;
                 r.pushState = n(o, "userflow:pushstate");
                 r.replaceState = n(s, "userflow:replacestate");
             }
 
             if (!t) {
-                var a = "https://js.userflow.com/", l = null;
+                var a = "https://js.userflow.com/",
+                    l = null;
                 t = e.userflow = {
                     _stubbed: !0,
                     load: function() {
-                        return l || (l = new Promise((function(t, r) {
+                        return l || (l = new Promise(function(t, r) {
                             var n = document.createElement("script");
                             n.async = !0;
                             var o = e.USERFLOWJS_ENV_VARS || {};
                             "es2020" === (o.USERFLOWJS_BROWSER_TARGET || function(e) {
-                                for (var t = [[/Edg\//, /Edg\/(\d+)/, 80], [/OPR\//, /OPR\/(\d+)/, 67], [/Chrome\//, /Chrome\/(\d+)/, 80], [/CriOS\//, /CriOS\/(\d+)/, 100], [/Safari\//, /Version\/(\d+)/, 14], [/Firefox\//, /Firefox\/(\d+)/, 74]], r = 0; r < t.length; r++) {
-                                    var n = t[r], o = n[0], s = n[1], a = n[2];
+                                for (var t = [
+                                    [/Edg\//, /Edg\/(\d+)/, 80],
+                                    [/OPR\//, /OPR\/(\d+)/, 67],
+                                    [/Chrome\//, /Chrome\/(\d+)/, 80],
+                                    [/CriOS\//, /CriOS\/(\d+)/, 100],
+                                    [/Safari\//, /Version\/(\d+)/, 14],
+                                    [/Firefox\//, /Firefox\/(\d+)/, 74]
+                                ], r = 0; r < t.length; r++) {
+                                    var n = t[r],
+                                        o = n[0],
+                                        s = n[1],
+                                        a = n[2];
                                     if (e.match(o)) {
                                         var l = e.match(new RegExp(s));
                                         if (l && parseInt(l[1], 10) >= a) return "es2020";
@@ -61,163 +75,92 @@
                                 t();
                             };
                             n.onerror = function() {
-                                document.head.removeChild(n);
-                                l = null;
+                                document.head.removeChild(n), l = null;
                                 var e = new Error("Could not load Userflow.js");
-                                console.warn(e.message);
-                                r(e);
+                                console.warn(e.message), r(e);
                             };
                             document.head.appendChild(n);
-                        })));
-                        return l;
-                    }
-                };
-            }
-            
-            var u = e.USERFLOWJS_QUEUE = e.USERFLOWJS_QUEUE || [],
-                i = function(e) {
-                    t[e] = function() {
-                        var r = Array.prototype.slice.call(arguments);
-                        t.load(), u.push([e, null, r]);
-                    }
-                }, c = function(e) {
-                    t[e] = function() {
-                        var r, n = Array.prototype.slice.call(arguments);
-                        t.load();
-                        var o = new Promise((function(e, t) {
-                            r = { resolve: e, reject: t };
-                        }));
-                        return u.push([e, r, n]), o;
-                    }
-                }, d = function(e, r) {
-                    t[e] = function() {
-                        return r;
+                        })), l;
                     }
                 };
 
-            // Define Userflow API methods
-            i("_setTargetEnv");
-            i("closeResourceCenter");
-            i("disableEvalJs");
-            i("init");
-            i("off");
-            i("on");
-            i("prepareAudio");
-            i("registerCustomInput");
-            i("remount");
-            i("reset");
-            i("setBaseZIndex");
-            i("setCustomInputSelector");
-            i("setCustomNavigate");
-            i("setCustomScrollIntoView");
-            i("setInferenceAttributeFilter");
-            i("setInferenceAttributeNames");
-            i("setInferenceClassNameFilter");
-            i("setResourceCenterLauncherHidden");
-            i("setScrollPadding");
-            i("setServerEndpoint");
-            i("setShadowDomEnabled");
-            i("setPageTrackingDisabled");
-            i("setUrlFilter");
-            i("setLinkUrlDecorator");
-            i("openResourceCenter");
-            i("toggleResourceCenter");
-            c("endAll");
-            c("endAllFlows");
-            c("endChecklist");
-            c("group");
-            c("identify");
-            c("identifyAnonymous");
-            c("start");
-            c("startFlow");
-            c("startWalk");
-            c("track");
-            c("updateGroup");
-            c("updateUser");
-            d("getResourceCenterState", null);
-            d("isIdentified", !1);
+                var u = e.USERFLOWJS_QUEUE = e.USERFLOWJS_QUEUE || [],
+                    i = function(e) {
+                        t[e] = function() {
+                            var r = Array.prototype.slice.call(arguments);
+                            t.load(), u.push([e, null, r]);
+                        };
+                    },
+                    c = function(e) {
+                        t[e] = function() {
+                            var r, n = Array.prototype.slice.call(arguments);
+                            t.load();
+                            var o = new Promise(function(e, t) {
+                                r = {
+                                    resolve: e,
+                                    reject: t
+                                };
+                            });
+                            return u.push([e, r, n]), o;
+                        };
+                    },
+                    d = function(e, r) {
+                        t[e] = function() {
+                            return r;
+                        };
+                    };
+
+                i("_setTargetEnv");
+                i("closeResourceCenter");
+                i("disableEvalJs");
+                i("init");
+                i("off");
+                i("on");
+                i("prepareAudio");
+                i("registerCustomInput");
+                i("remount");
+                i("reset");
+                i("setBaseZIndex");
+                i("setCustomInputSelector");
+                i("setCustomNavigate");
+                i("setCustomScrollIntoView");
+                i("setInferenceAttributeFilter");
+                i("setInferenceAttributeNames");
+                i("setInferenceClassNameFilter");
+                i("setResourceCenterLauncherHidden");
+                i("setScrollPadding");
+                i("setServerEndpoint");
+                i("setShadowDomEnabled");
+                i("setPageTrackingDisabled");
+                i("setUrlFilter");
+                i("setLinkUrlDecorator");
+                i("openResourceCenter");
+                i("toggleResourceCenter");
+                c("endAll");
+                c("endAllFlows");
+                c("endChecklist");
+                c("group");
+                c("identify");
+                c("identifyAnonymous");
+                c("start");
+                c("startFlow");
+                c("startWalk");
+                c("track");
+                c("updateGroup");
+                c("updateUser");
+                d("getResourceCenterState", null);
+                d("isIdentified", !1);
+            }
         }();
 
-        // Userflow initialization with user details
-        userflow.init('ct_q7tq7gzoufhedmse2kb47fck3e');
-        userflow.identify('1234', {
-            name: 'John Doe',
-            email: 'john.doe@example.com',
-            signed_up_at: '2023-12-01T14:30:00Z'
+        userflow.init('USERFLOW_TOKEN');
+        userflow.identify('ct_q7tq7gzoufhedmse2kb47fck3e', {
+            name: 'USER_NAME',
+            email: 'USER_EMAIL',
+            signed_up_at: 'USER_SIGNED_UP_AT'
         });
     </script>
 </head>
 <body>
-    <!-- Homepage -->
-    <div id="home">
-        <h1>Welcome to Our Mock E-Commerce Site</h1>
-        <p>Explore products, add to cart, and checkout!</p>
-        <button id="viewProducts">View Products</button>
-    </div>
-
-    <!-- Product List Page -->
-    <div id="product-list" style="display:none;">
-        <h2>Products</h2>
-        <ul>
-            <li><button id="product1">Product 1</button></li>
-            <li><button id="product2">Product 2</button></li>
-        </ul>
-    </div>
-
-    <!-- Product Detail Page -->
-    <div id="product-detail" style="display:none;">
-        <h2>Product Details</h2>
-        <p>Details for the selected product will be shown here.</p>
-        <button id="addToCart">Add to Cart</button>
-    </div>
-
-    <!-- Cart Page -->
-    <div id="cart" style="display:none;">
-        <h2>Your Cart</h2>
-        <ul>
-            <li>Product 1</li>
-        </ul>
-        <button id="checkout">Proceed to Checkout</button>
-    </div>
-
-    <!-- Checkout Page -->
-    <div id="checkout" style="display:none;">
-        <h2>Checkout</h2>
-        <form>
-            <label for="address">Shipping Address:</label>
-            <input type="text" id="address" name="address" placeholder="Enter your address" required>
-            <br>
-            <label for="payment">Payment Method:</label>
-            <select id="payment" name="payment">
-                <option value="creditCard">Credit Card</option>
-                <option value="paypal">PayPal</option>
-            </select>
-            <br>
-            <button type="submit">Complete Order</button>
-        </form>
-    </div>
-
-    <script>
-        // Simple Page Navigation for testing
-        document.getElementById('viewProducts').addEventListener('click', function() {
-            document.getElementById('home').style.display = 'none';
-            document.getElementById('product-list').style.display = 'block';
-        });
-
-        document.getElementById('product1').addEventListener('click', function() {
-            document.getElementById('product-list').style.display = 'none';
-            document.getElementById('product-detail').style.display = 'block';
-        });
-
-        document.getElementById('addToCart').addEventListener('click', function() {
-            document.getElementById('product-detail').style.display = 'none';
-            document.getElementById('cart').style.display = 'block';
-        });
-
-        document.getElementById('checkout').addEventListener('click', function() {
-            document.getElementById('cart').style.display = 'none';
-            document.getElementById('checkout').style.display = 'block';
-        });
-    </script>
 </body>
 </html>
