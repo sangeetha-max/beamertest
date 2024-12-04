@@ -16,22 +16,27 @@
 </head>
 <body>
   <h1>Welcome to My Website</h1>
-  <p>This page demonstrates lazy-loading Beamer based on a counter.</p>
+  <p>This page demonstrates only showing Beamer if there are new posts.</p>
 
   <script>
-    // Example: Counter or flag to check if there's new content
-    var counter = 1; // Replace with your logic to determine new content
-
-    // Wait for the Beamer script to load
+    // Check for unread posts before initializing Beamer
     window.addEventListener('load', function () {
-      if (counter > 0) {
-        // Initialize Beamer if there is new content
-        if (window.Beamer) {
-          window.Beamer.init();
-        }
-      } else {
-        console.log('No new content, Beamer will not be shown.');
-      }
+      fetch('https://app.getbeamer.com/unread?product_id=wuGJmAJh67807')
+        .then(response => response.json())
+        .then(data => {
+          if (data.unread_count > 0) {
+            // Initialize Beamer only if there are unread posts
+            if (window.Beamer) {
+              window.Beamer.init();
+              console.log('Beamer initialized with new posts.');
+            }
+          } else {
+            console.log('No new posts. Beamer widget not shown.');
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching unread post count:', error);
+        });
     });
   </script>
 </body>
