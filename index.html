@@ -16,7 +16,7 @@
 </head>
 <body>
   <h1>Welcome to My Website</h1>
-  <p>This page demonstrates only showing Beamer if there are new posts.</p>
+  <p>This page demonstrates showing the Beamer widget for new users based on unread posts.</p>
 
   <script>
     // Function to initialize Beamer
@@ -40,7 +40,9 @@
       fetch('https://app.getbeamer.com/unread?product_id=wuGJmAJh67807')
         .then(response => response.json())
         .then(data => {
+          // If unread_count is 1 or greater, initialize Beamer
           if (data.unread_count > 0) {
+            console.log('New posts detected. Initializing Beamer widget.');
             // Mark that the user has seen new posts, even if it's a new user
             localStorage.setItem('hasSeenNewPosts', 'true');
             // Initialize Beamer if there are unread posts
