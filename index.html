@@ -8,53 +8,7 @@
   <script>
     var beamer_config = {
       product_id: "wuGJmAJh67807", // Replace with your product ID
-      lazy: true
     };
-  </script>
-  <!-- Beamer Embed Script -->
-  <script src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
-</head>
-<body>
-  <h1>Welcome to My Website</h1>
-  <p>This page demonstrates showing the Beamer widget for new users based on unread posts.</p>
-
-  <script>
-    // Function to initialize Beamer
-    function initializeBeamer() {
-      if (window.Beamer) {
-        window.Beamer.init();
-        console.log('Beamer initialized.');
-      }
-    }
-
-    // Check for unread posts before initializing Beamer
-    window.addEventListener('load', function () {
-      // Check local storage for a flag indicating whether the user has seen new posts
-      const hasSeenNewPosts = localStorage.getItem('hasSeenNewPosts') === 'true';
-
-      if (hasSeenNewPosts) {
-        console.log('User has seen new posts. Beamer not initialized.');
-        return; // Do not show the widget
-      }
-
-      fetch('https://app.getbeamer.com/unread?product_id=wuGJmAJh67807')
-        .then(response => response.json())
-        .then(data => {
-          // If unread_count is 1 or greater, initialize Beamer
-          if (data.unread_count > 0) {
-            console.log('New posts detected. Initializing Beamer widget.');
-            // Mark that the user has seen new posts, even if it's a new user
-            localStorage.setItem('hasSeenNewPosts', 'true');
-            // Initialize Beamer if there are unread posts
-            initializeBeamer();
-          } else {
-            console.log('No new posts. Beamer widget not shown.');
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching unread post count:', error);
-        });
-    });
   </script>
 </body>
 </html>
