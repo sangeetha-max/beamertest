@@ -10,44 +10,6 @@
       product_id: "wuGJmAJh67807",
       lazy: true
     };
-
-    // Function to fetch unread count and initialize Beamer if count > 0
-    async function checkUnreadAndInitBeamer() {
-      try {
-        const response = await fetch("https://app.getbeamer.com/unread/count", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            // Include any necessary authorization headers if required
-          }
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          const unreadCount = data.count;
-
-          if (unreadCount > 0) {
-            // Initialize Beamer
-            Beamer.init();
-          } else {
-            console.log("No new posts, Beamer will not initialize.");
-          }
-        } else {
-          console.error("Failed to fetch unread count:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching unread count:", error);
-      }
-    }
-
-    // Call the function on page load
-    document.addEventListener("DOMContentLoaded", checkUnreadAndInitBeamer);
-  </script>
-  <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
-</head>
-<body>
-  <div id="root">
-    <!-- Your page content -->
-  </div>
+  </script.
 </body>
 </html>
