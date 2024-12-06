@@ -9,28 +9,27 @@
       product_id: "wuGJmAJh67807",
     };
   </script>
-  <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
+  <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
 </head>
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  
+
   <!-- Button without an ID -->
   <button class="open-beamer">Open Beamer</button>
   
   <script>
     // Ensure the Beamer script is loaded before attaching the event listener
     document.addEventListener('DOMContentLoaded', function () {
-      // Use the class selector to target the button
       const beamerButton = document.querySelector('.open-beamer');
 
       if (beamerButton) {
         beamerButton.addEventListener('click', function () {
-          // Trigger Beamer widget
-          if (typeof Beamer !== 'undefined') {
-            Beamer.open();
+          // Check if Beamer is defined and initialized
+          if (typeof Beamer !== 'undefined' && Beamer.open) {
+            Beamer.open(); // Trigger Beamer widget
           } else {
-            console.error("Beamer script is not loaded.");
+            console.error("Beamer script is not loaded or Beamer is not initialized yet.");
           }
         });
       } else {
