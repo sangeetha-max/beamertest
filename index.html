@@ -7,33 +7,12 @@
   <script>
     var beamer_config = {
       product_id: "wuGJmAJh67807", // Replace with your actual Beamer product ID
-      selector: "custom-beamer-button",
     };
   </script>
   <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
 </head>
 <body>
-  <button class="custom-beamer-button">Open Beamer</button>
-
-  <script>
-    // Wait for the Beamer script to load
-    document.addEventListener('DOMContentLoaded', function () {
-      // Select the button using the class selector
-      const customButton = document.querySelector('.custom-beamer-button');
-
-      // Attach a click event listener to the button
-      if (customButton) {
-        customButton.addEventListener('click', function () {
-          if (typeof Beamer !== 'undefined' && typeof Beamer.open === 'function') {
-            Beamer.open();
-          } else {
-            console.error('Beamer script is not loaded or Beamer.open is not a function.');
-          }
-        });
-      } else {
-        console.error('Custom Beamer button not found.');
-      }
-    });
-  </script>
+  <!-- Button with the .beamerTrigger class -->
+  <button class="beamerTrigger">Open Beamer</button>
 </body>
 </html>
