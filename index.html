@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beamer Lazy Initialization</title>
+  <title>Beamer Custom Button Trigger</title>
   <script>
     var beamer_config = {
       product_id: "wuGJmAJh67807",
-      selector: "my-custom-button",
     };
   </script>
   <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
@@ -16,13 +15,27 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
   
-  <!-- Simple Button -->
-  <button class="my-custom-button">Click Me</button>
+  <!-- Button without an ID -->
+  <button class="open-beamer">Open Beamer</button>
   
   <script>
-    // Add your custom JavaScript functionality for the button if needed
-    document.querySelector('.my-custom-button').addEventListener('click', () => {
-      console.log('Button clicked!');
+    // Ensure the Beamer script is loaded before attaching the event listener
+    document.addEventListener('DOMContentLoaded', function () {
+      // Use the class selector to target the button
+      const beamerButton = document.querySelector('.open-beamer');
+
+      if (beamerButton) {
+        beamerButton.addEventListener('click', function () {
+          // Trigger Beamer widget
+          if (typeof Beamer !== 'undefined') {
+            Beamer.open();
+          } else {
+            console.error("Beamer script is not loaded.");
+          }
+        });
+      } else {
+        console.error("Button with class 'open-beamer' not found.");
+      }
     });
   </script>
 </body>
