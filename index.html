@@ -3,37 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beamer Custom Button Trigger</title>
+  <title>Beamer Custom Button</title>
   <script>
     var beamer_config = {
-      product_id: "wuGJmAJh67807",
+      product_id: "wuGJmAJh67807", // Replace with your actual Beamer product ID
+      selector: "custom-beamer-button",
     };
   </script>
   <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
 </head>
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <button class="custom-beamer-button">Open Beamer</button>
 
-  <!-- Button without an ID -->
-  <button class="open-beamer">Open Beamer</button>
-  
   <script>
-    // Ensure the Beamer script is loaded before attaching the event listener
+    // Wait for the Beamer script to load
     document.addEventListener('DOMContentLoaded', function () {
-      const beamerButton = document.querySelector('.open-beamer');
+      // Select the button using the class selector
+      const customButton = document.querySelector('.custom-beamer-button');
 
-      if (beamerButton) {
-        beamerButton.addEventListener('click', function () {
-          // Check if Beamer is defined and initialized
-          if (typeof Beamer !== 'undefined' && Beamer.open) {
-            Beamer.open(); // Trigger Beamer widget
+      // Attach a click event listener to the button
+      if (customButton) {
+        customButton.addEventListener('click', function () {
+          if (typeof Beamer !== 'undefined' && typeof Beamer.open === 'function') {
+            Beamer.open();
           } else {
-            console.error("Beamer script is not loaded or Beamer is not initialized yet.");
+            console.error('Beamer script is not loaded or Beamer.open is not a function.');
           }
         });
       } else {
-        console.error("Button with class 'open-beamer' not found.");
+        console.error('Custom Beamer button not found.');
       }
     });
   </script>
