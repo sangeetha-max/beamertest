@@ -26,26 +26,4 @@
     }
 
     /* Sliding out */
-    .beamer_defaultBeamerSelector {
-      transform: translateX(0);
-    }
-  </style>
-</head>
-<body>
-  <!-- Custom Button to Trigger Beamer -->
-  <button id="customBeamerButton">Open Beamer</button>
-
-  <script>
-    // Wait for the Beamer script to load
-    document.addEventListener("DOMContentLoaded", function () {
-      const beamerWidget = document.querySelector('.beamer_defaultBeamerSelector');
-      const customButton = document.getElementById('customBeamerButton');
-
-      // Show Beamer widget with animation on button click
-      customButton.addEventListener('click', function () {
-        beamerWidget.classList.toggle('open'); // Toggle sliding animation
-      });
-    });
-  </script>
-</body>
-</html>
+    .beamer_defaultBeamerSelector.closing {
