@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width">
   <title>Beamer Custom Button with Animation</title>
   <script>
     var beamer_config = {
@@ -11,19 +11,3 @@
   </script>
   <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
   <style>
-    /* Beamer widget base style */
-    .beamer_defaultBeamerSelector {
-      position: fixed;
-      bottom: 20px; /* Adjust to align with your design */
-      right: -400px; /* Initially hidden off-screen */
-      width: 300px; /* Adjust to match Beamer widget width */
-      transition: transform 0.5s ease-in-out;
-    }
-
-    /* Sliding in */
-    .beamer_defaultBeamerSelector.open {
-      transform: translateX(-400px); /* Moves into view */
-    }
-
-    /* Sliding out */
-    .beamer_defaultBeamerSelector.closing {
