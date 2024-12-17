@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beamer Auto Open Widget with Userflow</title>
   
- <script>
+ <!-- Trigger element for Beamer widget -->
+<div class="beamerTrigger">What's new</div>
+
+<script>
   // Beamer configuration
   var beamer_config = {
     product_id: "wuGJmAJh67807", // Replace with your actual Beamer product ID
@@ -13,15 +16,10 @@
     button: true,
     button_position: "bottom-left"
   };
+
+  // Note: Please keep in mind that MAU (Monthly Active Users) and users with views are different metrics.
 </script>
 <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
-
-<style>
-  /* Custom CSS for Beamer widget */
-  .beamer-container {
-    width: 1200px !important; /* Adjust the width as needed */
-  }
-</style>
 
   <!-- Userflow Embed -->
   <script>
