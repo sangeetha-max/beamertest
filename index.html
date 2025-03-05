@@ -9,37 +9,38 @@
   <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"> 
 
   <!-- Beamer Configuration -->
-  <script>	
-      var beamer_config = {
-          product_id: "wuGJmAJh67807", // DO NOT CHANGE
-          filter: 'admin',
-          button: false, 
-      };
+  <script>
+    const beamer_config = {
+        product_id: "wuGJmAJh67807", // DO NOT CHANGE
+        filter: "admin",
+        button: false, 
+    };
   </script>
-  <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
+  <script src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
 
   <!-- Userflow Configuration -->
   <script>
     (function() {
-      var userflowToken = "ct_4dyikjwlbrdyvhjsljhjnvzgeq"; // Replace with your actual Userflow token
-      var userId = "1298"; // Replace with actual user ID
-      var userName = "sangeetha"; // Replace with actual user name
-      var userEmail = "test@arabic.com"; // Replace with actual user email
-      var userLocale = "ar"; // Arabic locale
+      const userflowToken = "ct_4dyikjwlbrdyvhjsljhjnvzgeq"; // Replace with actual token
+      const userId = "1298"; // Replace with actual user ID
+      const userName = "Sangeetha"; // Replace with actual user name
+      const userEmail = "test@arabic.com"; // Replace with actual user email
+      const userLocale = "ar"; // Arabic locale
+      const userSignedUpAt = "2024-01-01T00:00:00Z"; // Replace with actual timestamp
 
-      window._userflowConfig = { token: userflowToken };
-
-      var script = document.createElement("script");
+      const script = document.createElement("script");
       script.src = "https://cdn.userflow.com/userflow.js";
       script.defer = true;
       script.onload = function() {
-        userflow.init(userflowToken);
-        userflow.identify(userId, {
-          name: userName,
-          email: userEmail,
-          signed_up_at: userSignedUpAt,
-          locale: userLocale
-        });
+        if (window.userflow) {
+          userflow.init(userflowToken);
+          userflow.identify(userId, {
+            name: userName,
+            email: userEmail,
+            signed_up_at: userSignedUpAt,
+            locale: userLocale
+          });
+        }
       };
       document.head.appendChild(script);
     })();
