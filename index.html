@@ -8,14 +8,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"> 
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-53JGBF8S');</script>
-  <!-- End Google Tag Manager -->
-
+  <!-- Beamer Configuration -->
   <script>	
       var beamer_config = {
           product_id: "wuGJmAJh67807", // DO NOT CHANGE
@@ -24,6 +17,33 @@
       };
   </script>
   <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
+
+  <!-- Userflow Configuration -->
+  <script>
+    (function() {
+      var userflowToken = "ct_4dyikjwlbrdyvhjsljhjnvzgeq"; // Replace with your actual Userflow token
+      var userId = "1298"; // Replace with actual user ID
+      var userName = "sangeetha"; // Replace with actual user name
+      var userEmail = "test@arabic.com"; // Replace with actual user email
+      var userLocale = "ar"; // Arabic locale
+
+      window._userflowConfig = { token: userflowToken };
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.userflow.com/userflow.js";
+      script.defer = true;
+      script.onload = function() {
+        userflow.init(userflowToken);
+        userflow.identify(userId, {
+          name: userName,
+          email: userEmail,
+          signed_up_at: userSignedUpAt,
+          locale: userLocale
+        });
+      };
+      document.head.appendChild(script);
+    })();
+  </script>
 
   <style>
     /* Basic styles for the button */
@@ -45,11 +65,6 @@
 </head>
 
 <body>
-
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53JGBF8S"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <h1>Welcome to Beamer with Userflow Integration</h1>
 
