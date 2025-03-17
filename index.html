@@ -160,18 +160,18 @@
         Beamer.show();
       });
     });
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('.featureFeedback .emojis span').forEach(span => {
-        span.removeAttribute('title'); // Removes initial title
 
-        // Prevent title from appearing again
-        span.addEventListener('mouseover', function() {
-            this.removeAttribute('title');
-        });
+    // Remove hover text from reaction icons
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.featureFeedback .emojis span').forEach(span => {
+          span.removeAttribute('title'); // Removes initial title
+
+          // Prevent title from appearing again
+          span.addEventListener('mouseover', function() {
+              this.removeAttribute('title');
+          });
+      });
     });
-});
-</script>
   </script>
 </body>
 </html>
