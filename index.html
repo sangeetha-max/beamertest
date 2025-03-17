@@ -160,6 +160,13 @@
         Beamer.show();
       });
     });
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.featureFeedback .emojis span').forEach(span => {
+        span.removeAttribute('title'); // Removes hover text
+    });
+});
+</script>
   </script>
 </body>
 </html>
