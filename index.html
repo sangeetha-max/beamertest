@@ -13,34 +13,6 @@
       filter: "admin",
       button: false
     };
-  </script>
-  <script src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
-
-  <!-- Userflow.js Installation -->
-  <script>
-    !function(){
-      var e="undefined"==typeof window?{}:window,t=e.userflow,r=e.history;
-      function n(t,n){return function(){var o=new CustomEvent(n),
-        s=Array.prototype.slice.call(arguments),a=t.apply(r,s);
-        return e.dispatchEvent(o),a}}if(r){e.__userflowStatePatched=!0;
-        var o=r.pushState,s=r.replaceState;r.pushState=n(o,"userflow:pushstate"),
-        r.replaceState=n(s,"userflow:replacestate")}if(!t){var a="https://js.userflow.com/",l=null;
-        t=e.userflow={_stubbed:!0,load:function(){return l||(l=new Promise((function(t,r){
-          var n=document.createElement("script");
-          n.async=!0;var o=e.USERFLOWJS_ENV_VARS||{};
-          "es2020"===(o.USERFLOWJS_BROWSER_TARGET||function(e){for(var t=[
-            [/Edg\//,/Edg\/(\d+)/,80],[/OPR\//,/OPR\/(\d+)/,67],
-            [/Chrome\//,/Chrome\/(\d+)/,80],[/CriOS\//,/CriOS\/(\d+)/,100],
-            [/Safari\//,/Version\/(\d+)/,14],[/Firefox\//,/Firefox\/(\d+)/,74]],r=0;r<t.length;r++){
-              var n=t[r],o=n[0],s=n[1],a=n[2];if(e.match(o)){var l=e.match(new RegExp(s));
-              if(l&&parseInt(l[1],10)>=a)return"es2020";break}}return"legacy"}
-            (navigator.userAgent))?(n.type="module",n.src=o.USERFLOWJS_ES2020_URL||a+"es2020/userflow.js"):
-            n.src=o.USERFLOWJS_LEGACY_URL||a+"legacy/userflow.js",n.onload=function(){t()},n.onerror=function(){
-            document.head.removeChild(n),l=null;var e=new Error("Could not load Userflow.js");
-            console.warn(e.message),r(e)},document.head.appendChild(n)}))),l}};
-      }
-    }();
-  </script>
 
   <style>
     .beamerTrigger {
