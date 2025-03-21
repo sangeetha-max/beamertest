@@ -11,8 +11,12 @@
       product_id: "wuGJmAJh67807", // DO NOT CHANGE
       user_id: "1239",
       filter: "admin",
-      button: false,
+      button: false
     };
+  </script>
+
+  <!-- Beamer Script -->
+  <script src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
 
   <style>
     .beamerTrigger {
@@ -38,22 +42,11 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       document.querySelector(".beamerTrigger").addEventListener("click", function() {
-        Beamer.show();
-      });
-    });
-
-    userflow.load().then(() => {
-      userflow.init("ct_icfejw4dqreh3oq27ka7wcj6tm");
-      userflow.identify("135", {
-        name: "teswe",
-        email: "test@en331.com",
-        locale_code: "en-US",
-      });
-      userflow.group("123", {
-        name: "Acme Inc.",
-        plan: "Premium",
-        imageurl: "fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U",
-        signed_up_at: "2019-06-14T16:25:49Z"
+        if (window.Beamer) {
+          Beamer.show();
+        } else {
+          console.error("Beamer is not loaded yet.");
+        }
       });
     });
   </script>
