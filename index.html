@@ -1,37 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beamer + Userflow Integration</title>
 
-  <!-- Userflow Script -->
-  <script>
-  !function(){var e="undefined"==typeof window?{}:window,t=e.userflow,r=e.history;function n(t,n){return function(){var o=new CustomEvent(n),s=Array.prototype.slice.call(arguments),a=t.apply(r,s);return e.dispatchEvent(o),a}}if(r){e.__userflowStatePatched=!0;var o=r.pushState,s=r.replaceState;r.pushState=n(o,"userflow:pushstate"),r.replaceState=n(s,"userflow:replacestate")}if(!t){var a="https://js.userflow.com/",l=null;t=e.userflow={_stubbed:!0,load:function(){return l||(l=new Promise((function(t,r){var n=document.createElement("script");n.async=!0;var o=e.USERFLOWJS_ENV_VARS||{};"es2020"===(o.USERFLOWJS_BROWSER_TARGET||function(e){for(var t=[[/Edg\//,/Edg\/(\d+)/,80],[/OPR\//,/OPR\/(\d+)/,67],[/Chrome\//,/Chrome\/(\d+)/,80],[/CriOS\//,/CriOS\/(\d+)/,100],[/Safari\//,/Version\/(\d+)/,14],[/Firefox\//,/Firefox\/(\d+)/,74]],r=0;r<t.length;r++){var n=t[r],o=n[0],s=n[1],a=n[2];if(e.match(o)){var l=e.match(new RegExp(s));if(l&&parseInt(l[1],10)>=a)return"es2020";break}}return"legacy"}(navigator.userAgent))?(n.type="module",n.src=o.USERFLOWJS_ES2020_URL||a+"es2020/userflow.js"):n.src=o.USERFLOWJS_LEGACY_URL||a+"legacy/userflow.js",n.onload=function(){t()},n.onerror=function(){document.head.removeChild(n),l=null;var e=new Error("Could not load Userflow.js");console.warn(e.message),r(e)},document.head.appendChild(n)}))),l}};var u=e.USERFLOWJS_QUEUE=e.USERFLOWJS_QUEUE||[],i=function(e){t[e]=function(){var r=Array.prototype.slice.call(arguments);t.load(),u.push([e,null,r])}},c=function(e){t[e]=function(){var r,n=Array.prototype.slice.call(arguments);t.load();var o=new Promise((function(e,t){r={resolve:e,reject:t}}));return u.push([e,r,n]),o}},d=function(e,r){t[e]=function(){return r}};i("_setTargetEnv"),i("closeResourceCenter"),i("disableEvalJs"),i("init"),i("off"),i("on"),i("prepareAudio"),i("registerCustomInput"),i("remount"),i("reset"),i("setBaseZIndex"),i("setCustomInputSelector"),i("setCustomNavigate"),i("setCustomScrollIntoView"),i("setInferenceAttributeFilter"),i("setInferenceAttributeNames"),i("setInferenceClassNameFilter"),i("setResourceCenterLauncherHidden"),i("setScrollPadding"),i("setServerEndpoint"),i("setShadowDomEnabled"),i("setPageTrackingDisabled"),i("setUrlFilter"),i("setLinkUrlDecorator"),i("openResourceCenter"),i("toggleResourceCenter"),c("endAll"),c("endAllFlows"),c("endChecklist"),c("group"),c("identify"),c("identifyAnonymous"),c("start"),c("startFlow"),c("startWalk"),c("track"),c("updateGroup"),c("updateUser"),c("debugger"),d("getResourceCenterState",null),d("isIdentified",!1)}}();
-
-  // Generate ISO date string (for signed_up_at)
-  var isoDateString = new Date().toISOString();
-
-  // Initialize Userflow with your token and user info
-  userflow.init("ct_4dyikjwlbrdyvhjsljhjnvzgeq");
-  userflow.identify("hubtest145", {
-    name: 'hubspot',
-    email: 'email@hubspottest.com',
-    device_type: window.innerWidth > 800 ? 'desktop' : 'mobile',
-    signed_up_at: isoDateString,
-  });
+  <!-- ✅ HEAP Analytics Script (added first in head) -->
+  <script type="text/javascript">
+    window.heapReadyCb = window.heapReadyCb || [], window.heap = window.heap || [], heap.load = function (e, t) {
+      window.heap.envId = e, window.heap.clientConfig = t = t || {}, window.heap.clientConfig.shouldFetchServerConfig = !1;
+      var a = document.createElement("script");
+      a.type = "text/javascript", a.async = !0, a.src = "https://cdn.us.heap-api.com/config/" + e + "/heap_config.js";
+      var r = document.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(a, r);
+      var n = ["init", "startTracking", "stopTracking", "track", "resetIdentity", "identify", "getSessionId", "getUserId", "getIdentity", "addUserProperties", "addEventProperties", "removeEventProperty", "clearEventProperties", "addAccountProperties", "addAdapter", "addTransformer", "addTransformerFn", "onReady", "addPageviewProperties", "removePageviewProperty", "clearPageviewProperties", "trackPageview"], i = function (e) {
+        return function () {
+          var t = Array.prototype.slice.call(arguments, 0);
+          window.heapReadyCb.push({ name: e, fn: function () { heap[e] && heap[e].apply(heap, t) } });
+        };
+      };
+      for (var p = 0; p < n.length; p++) heap[n[p]] = i(n[p]);
+    };
+    heap.load("4041121915"); // <-- Replace with your actual Heap app ID if different
   </script>
 
-  <!-- Beamer Configuration -->
+  <!-- ✅ Userflow Script -->
+  <script>
+    !function () {
+      var e = "undefined" == typeof window ? {} : window,
+        t = e.userflow,
+        r = e.history;
+      function n(t, n) {
+        return function () {
+          var o = new CustomEvent(n),
+            s = Array.prototype.slice.call(arguments),
+            a = t.apply(r, s);
+          return e.dispatchEvent(o), a;
+        };
+      }
+      if (r) {
+        e.__userflowStatePatched = !0;
+        var o = r.pushState, s = r.replaceState;
+        r.pushState = n(o, "userflow:pushstate"),
+        r.replaceState = n(s, "userflow:replacestate");
+      }
+      if (!t) {
+        var a = "https://js.userflow.com/", l = null;
+        t = e.userflow = {
+          _stubbed: !0,
+          load: function () {
+            return l || (l = new Promise(function (t, r) {
+              var n = document.createElement("script");
+              n.async = !0;
+              var o = e.USERFLOWJS_ENV_VARS || {};
+              "es2020" === (o.USERFLOWJS_BROWSER_TARGET || function (e) {
+                for (var t = [[/Edg\//, /Edg\/(\d+)/, 80], [/OPR\//, /OPR\/(\d+)/, 67], [/Chrome\//, /Chrome\/(\d+)/, 80], [/CriOS\//, /CriOS\/(\d+)/, 100], [/Safari\//, /Version\/(\d+)/, 14], [/Firefox\//, /Firefox\/(\d+)/, 74]], r = 0; r < t.length; r++) {
+                  var n = t[r], o = n[0], s = n[1], a = n[2];
+                  if (e.match(o)) {
+                    var l = e.match(new RegExp(s));
+                    if (l && parseInt(l[1], 10) >= a) return "es2020";
+                    break;
+                  }
+                }
+                return "legacy";
+              }(navigator.userAgent)) ?
+                (n.type = "module", n.src = o.USERFLOWJS_ES2020_URL || a + "es2020/userflow.js") :
+                n.src = o.USERFLOWJS_LEGACY_URL || a + "legacy/userflow.js",
+                n.onload = function () { t(); },
+                n.onerror = function () {
+                  document.head.removeChild(n),
+                    l = null;
+                  var e = new Error("Could not load Userflow.js");
+                  console.warn(e.message), r(e);
+                },
+                document.head.appendChild(n);
+            })), l;
+          }
+        };
+        var u = e.USERFLOWJS_QUEUE = e.USERFLOWJS_QUEUE || [],
+          i = function (e) {
+            t[e] = function () {
+              var r = Array.prototype.slice.call(arguments);
+              t.load(), u.push([e, null, r]);
+            };
+          },
+          c = function (e) {
+            t[e] = function () {
+              var r, n = Array.prototype.slice.call(arguments);
+              t.load();
+              var o = new Promise(function (e, t) { r = { resolve: e, reject: t }; });
+              return u.push([e, r, n]), o;
+            };
+          },
+          d = function (e, r) { t[e] = function () { return r; }; };
+        i("_setTargetEnv"), i("closeResourceCenter"), i("disableEvalJs"), i("init"), i("off"), i("on"), i("prepareAudio"), i("registerCustomInput"), i("remount"), i("reset"), i("setBaseZIndex"), i("setCustomInputSelector"), i("setCustomNavigate"), i("setCustomScrollIntoView"), i("setInferenceAttributeFilter"), i("setInferenceAttributeNames"), i("setInferenceClassNameFilter"), i("setResourceCenterLauncherHidden"), i("setScrollPadding"), i("setServerEndpoint"), i("setShadowDomEnabled"), i("setPageTrackingDisabled"), i("setUrlFilter"), i("setLinkUrlDecorator"), i("openResourceCenter"), i("toggleResourceCenter"), c("endAll"), c("endAllFlows"), c("endChecklist"), c("group"), c("identify"), c("identifyAnonymous"), c("start"), c("startFlow"), c("startWalk"), c("track"), c("updateGroup"), c("updateUser"), c("debugger"), d("getResourceCenterState", null), d("isIdentified", !1)
+      }
+    }();
+
+    var isoDateString = new Date().toISOString();
+
+    userflow.init("ct_4dyikjwlbrdyvhjsljhjnvzgeq");
+    userflow.identify("hubtest145", {
+      name: 'hubspot',
+      email: 'email@hubspottest.com',
+      device_type: window.innerWidth > 800 ? 'desktop' : 'mobile',
+      signed_up_at: isoDateString,
+    });
+  </script>
+
+  <!-- ✅ Beamer Configuration -->
   <script>
     var beamer_config = {
-      product_id: "wuGJmAJh67807", // DO NOT CHANGE
+      product_id: "wuGJmAJh67807",
       user_id: "2970",
       filter: "admin",
     };
   </script>
 
-  <!-- Beamer Script -->
+  <!-- ✅ Beamer Script -->
   <script src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
 
   <style>
@@ -56,8 +142,8 @@
   <button class="beamerTrigger">Feedback Test</button>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      document.querySelector(".beamerTrigger").addEventListener("click", function() {
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelector(".beamerTrigger").addEventListener("click", function () {
         if (window.Beamer) {
           Beamer.show();
         } else {
