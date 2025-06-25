@@ -1,30 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beamer + Userflow Integration</title>
 
-  <!-- ✅ Userflow Script (unchanged) -->
+  <!-- ✅ Load Userflow.js asynchronously -->
   <script>
-    // (Keep your existing Userflow setup here)
-    userflow.init("ct_4dyikjwlbrdyvhjsljhjnvzgeq");
-    userflow.identify("rudhrabharathywork@gmail.com", {
-      name: "Rudhra Bharathy",
-      email: "rudhrabharathywork@gmail.com",
-      device_type: window.innerWidth > 800 ? 'desktop' : 'mobile',
-    });
+    (function () {
+      var script = document.createElement("script");
+      script.src = "https://js.userflow.com/legacy/userflow.js";
+      script.async = true;
+      script.onload = function () {
+        // ✅ Initialize Userflow
+        userflow.init("ct_4dyikjwlbrdyvhjsljhjnvzgeq");
+
+        // ✅ Identify User (replace values dynamically in production)
+        userflow.identify("rudhrabharathywork@gmail.com", {
+          name: "Rudhra Bharathy",
+          email: "rudhrabharathywork@gmail.com",
+          device_type: window.innerWidth > 800 ? "desktop" : "mobile"
+        });
+      };
+      document.head.appendChild(script);
+    })();
   </script>
 
-  <!-- ✅ Beamer Configuration (no selector!) -->
+  <!-- ✅ Beamer Configuration -->
   <script>
     var beamer_config = {
       product_id: "wuGJmAJh67807",
       user_id: "12p",
-      user_email: "sangeetha.srinivasan12p@userflow.com", 
-      language: "EN", 
+      user_email: "sangeetha.srinivasan12p@userflow.com",
+      language: "EN",
       filter: "admin"
-      // No selector here!
     };
   </script>
 
@@ -50,15 +59,15 @@
 <body>
   <h1>Welcome to Beamer + Userflow Integration</h1>
 
-  <!-- Custom Button -->
+  <!-- ✅ Custom Beamer Button -->
   <button class="beamerTrigger">Feedback Test</button>
 
-  <!-- ✅ Manual Trigger Script -->
+  <!-- ✅ Manual Beamer Trigger -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".beamerTrigger").addEventListener("click", function () {
         if (window.Beamer) {
-          Beamer.show(); // ✅ Manually open the Beamer feed
+          Beamer.show();
         } else {
           console.error("Beamer is not loaded yet.");
         }
