@@ -22,6 +22,9 @@
           device_type: window.innerWidth > 800 ? "desktop" : "mobile"
         });
       };
+      script.onerror = function () {
+        console.error("Failed to load Userflow.js");
+      };
       document.head.appendChild(script);
     })();
   </script>
@@ -32,9 +35,9 @@
       product_id: "wuGJmAJh67807",
       user_id: "12wrrr2gn11kam",
       user_email: "sangeethag.srinivasan@userflowkam.com",
-      filter: "MSP", 
+      filter: "MSP",
       loyalty: true,
-      multi_user: true, 
+      multi_user: true,
       language: 'EN',
     };
   </script>
@@ -42,7 +45,12 @@
   <!-- ✅ Beamer Script -->
   <script src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
 
+  <!-- ✅ CSS -->
   <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
     .beamerTrigger {
       padding: 10px 20px;
       font-size: 16px;
@@ -52,8 +60,15 @@
       cursor: pointer;
       border-radius: 5px;
     }
+
     .beamerTrigger:hover {
       background-color: #0056b3;
+    }
+
+    /* ✅ Hide Beamer icon when popup is active (modern browsers) */
+    body:has(.beamerAnnouncementPopupContainer.beamerAnnouncementPopupActive) 
+      .beamer_icon.active {
+      display: none !important;
     }
   </style>
 </head>
