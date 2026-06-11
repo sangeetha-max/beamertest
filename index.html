@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beamer + Userflow Integration</title>
 
-  <!-- ✅ Load Userflow.js asynchronously -->
+  <!-- Userflow -->
   <script>
     (function () {
       var script = document.createElement("script");
       script.src = "https://js.userflow.com/legacy/userflow.js";
       script.async = true;
       script.onload = function () {
-        // ✅ Initialize Userflow
         userflow.init("ct_4dyikjwlbrdyvhjsljhjnvzgeq");
 
-        // ✅ Identify User (replace values dynamically in production)
         userflow.identify("rudhrabharathywork@gmail.com", {
           name: "Rudhra Bharathy",
           email: "rudhrabharathywork@gmail.com",
@@ -29,44 +27,33 @@
     })();
   </script>
 
-  <!-- ✅ Beamer Configuration -->
+  <!-- Beamer Configuration -->
   <script>
     var beamer_config = {
       product_id: "wuGJmAJh67807",
       user_id: "m2@gmail.com",
       user_email: "m2@gmail.com",
       filter: "admin;manager",
-      language: 'EN',
+      language: "EN",
+
+      selector: "#myBeamerContainer",
+      embed: true
     };
   </script>
 
-  <!-- ✅ Beamer Script -->
+  <!-- Beamer Script -->
   <script src="https://app.getbeamer.com/js/beamer-embed.js" defer></script>
 
-  <!-- ✅ CSS -->
   <style>
     body {
       font-family: Arial, sans-serif;
+      padding: 20px;
     }
 
-    .beamerTrigger {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .beamerTrigger:hover {
-      background-color: #0056b3;
-    }
-
-    /* ✅ Hide Beamer icon when popup is active (modern browsers) */
-    body:has(.beamerAnnouncementPopupContainer.beamerAnnouncementPopupActive) 
-      .beamer_icon.active {
-      display: none !important;
+    #myBeamerContainer {
+      width: 1080px;
+      height: 600px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
@@ -74,20 +61,8 @@
 <body>
   <h1>Welcome to Beamer + Userflow Integration</h1>
 
-  <!-- ✅ Custom Beamer Button -->
-  <button class="beamerTrigger">Feedback Test</button>
+  <!-- Embedded Beamer Widget -->
+  <div id="myBeamerContainer"></div>
 
-  <!-- ✅ Manual Beamer Trigger -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      document.querySelector(".beamerTrigger").addEventListener("click", function () {
-        if (window.Beamer) {
-          Beamer.show();
-        } else {
-          console.error("Beamer is not loaded yet.");
-        }
-      });
-    });
-  </script>
 </body>
 </html>
